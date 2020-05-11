@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        int i=num;
+        int bitS=0;
+        while(i){
+            i>>=1;
+            bitS<<=1;
+            bitS|=1;
+        }
+        return num^bitS;
+    }
+};
