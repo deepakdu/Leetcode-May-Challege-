@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int findJudge(int N, vector<vector<int>>& trust) {
+        /*
+        set<int> s1;
+        int count=0;
+        int res=0;
+        for(int i=0;i<trust.size();i++)
+            s1.insert(trust[i][0]);
+        for(int i=1;i<=N;i++){
+            if(s1.find(i)==s1.end())
+                res= i;
+        }
+        for(int i=0;i<trust.size();i++){
+            if(trust[i][0]==res)
+                return -1;
+        }
+        for(int i=0;i<trust.size();i++){
+            if(trust[i][1]==res)
+                count++;
+        }
+        if(count==N-1) 
+            return res;
+        return -1;
+        */
+        // Another Approach
+        vector<int> trusts(N + 1, 0);
+        for(auto person : trust){
+            trusts[person[0]]--;
+            trusts[person[1]]++;
+        }
+        for(int i = 1;i <= N;i++){
+            if(trusts[i] == N - 1)
+                return i;
+        }
+        return -1;
+    }
+};
